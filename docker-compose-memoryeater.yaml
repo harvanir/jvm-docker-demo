@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  memory-eater:
+    image: memory-eater
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 1200m
+        reservations:
+          cpus: '1.00'
+          memory: 1200m
+    environment:
+      - SLEEP_EACH_ITERATE_IN_MILLIS=10
+      - JVM_OPT=-XX:MaxRAMPercentage=90.0 -XX:+UseG1GC -XX:G1HeapRegionSize=16M  -XX:+UseStringDeduplication
+#      - JMX=-Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.rmi.port=9999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Djava.rmi.server.hostname=127.0.0.1
+#    restart: unless-stopped

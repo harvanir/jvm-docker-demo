@@ -1,0 +1,2 @@
+docker container rm /memory-eater1
+docker run -m 5120m --memory-swappiness=0 --env SLEEP_EACH_ITERATE_IN_MILLIS="10" --env MAX_ITERATION="2000" --env JVM_OPT="-XX:MaxRAMPercentage=90.0 -XX:+UseG1GC -XX:G1HeapRegionSize=16M -XX:MaxHeapFreeRatio=70 -XX:+UseStringDeduplication" --name memory-eater1 memory-eater

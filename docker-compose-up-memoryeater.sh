@@ -1,0 +1,1 @@
+docker-compose -f docker-compose-memoryeater.yaml --compatibility up

@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  jvm-test:
+    image: openjdk:8u212-jre-alpine3.9
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 1g
+        reservations:
+          cpus: '1.00'
+          memory: 1g
+    command:
+      - "sh"
+      - "-c"
+      - "java -XX:+PrintFlagsFinal -version | grep -Ei 'maxheap|maxram|maxmetaspace|maxnew|G1HeapRegionSize|G1HeapWastePercent|GCHeapFreeLimit|InitialHeapSize|InitiatingHeapOccupancyPercent'"
